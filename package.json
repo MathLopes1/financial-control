@@ -27,7 +27,7 @@
     "express": "^4.18.0",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.6",
+    "typeorm": "^0.2.45",
     "winston": "^3.7.2"
   }
 }
