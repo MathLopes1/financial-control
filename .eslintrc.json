@@ -15,8 +15,10 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-console": "off",
         "class-methods-use-this":"off",
         "import/no-unresolved": "off",
-        "import/extensions": "off"
+        "import/extensions": "off",
+        "import/prefer-default-export": "off"        
     }
 }
