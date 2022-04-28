@@ -1,5 +1,7 @@
 import { createConnection } from 'typeorm';
 
+import { logger } from '../app/utils/log/logger';
+
 class Database {
   constructor() {
     this.connect();
@@ -8,7 +10,8 @@ class Database {
   public async connect(): Promise<void> {
     try {
       await createConnection();
-      console.log('connected with the database');
+      logger
+        .info('connected with the database');
     } catch (err) {
       console.log(err);
     }
