@@ -7,4 +7,5 @@ export interface ISpendRepository {
         educacao: number,
         saude: number,
         transporte: number) => Promise<ISpend>
+    find: () => Promise<ISpend | ISpend[]>
 }

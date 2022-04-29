@@ -22,6 +22,12 @@ class SpendRepository implements ISpendRepository {
     const result: ISpend = await repo.save(newSpend);
     return result;
   }
+
+  async find(): Promise<ISpend | ISpend[]> {
+    const repo = getRepository(Spend);
+    const findSpend = repo.find();
+    return findSpend;
+  }
 }
 
 export default SpendRepository;
