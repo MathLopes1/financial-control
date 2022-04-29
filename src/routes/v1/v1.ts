@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { attachControllers } from '@decorators/express';
 import UserController from '../../app/controllers/UserController';
+import GainController from '../../app/controllers/GainController';
 
 class RoutesV1 {
   static routes(): Router {
@@ -10,6 +11,7 @@ class RoutesV1 {
       router,
       [
         UserController,
+        GainController,
       ],
     );
     return router;
