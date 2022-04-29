@@ -9,4 +9,5 @@ export interface ISpendRepository {
         transporte: number) => Promise<ISpend>
     find: () => Promise<ISpend | ISpend[]>
     updated: (id: string, payload) => Promise<void>
+    delete: (id: string) => Promise<void>
 }
