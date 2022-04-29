@@ -26,7 +26,7 @@ export class SpendMigration1651256408269 implements MigrationInterface {
             type: "float",
           },
           {
-            name: "saude ",
+            name: "saude",
             type: "float",
           },
           {
