@@ -10,6 +10,12 @@ class GainRepository implements IGainRepository {
     const result: IGain = await repo.save(newGain);
     return result;
   }
+
+  async find(): Promise<IGain | IGain[]> {
+    const repo = getRepository(Gain);
+    const findGain = repo.find();
+    return findGain;
+  }
 }
 
 export default GainRepository;
