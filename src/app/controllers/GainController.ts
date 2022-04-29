@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import {
-  Controller, Get, Post, Put,
+  Controller, Delete, Get, Post, Put,
 } from "@decorators/express";
 
 import { IGain } from "../Interfaces/Gain/IGain";
@@ -57,10 +57,26 @@ class GainController {
     try {
       const { id } = req.params;
       const payload = req.body;
-
       await this.gainService.updated(id, payload);
 
       return res.status(200).json('Updated Sucess');
+    } catch (error) {
+      return res.status(404).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
+
+  @Delete('/:id')
+  async delete(req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params;
+      await this.gainService.delete(id);
+
+      return res.status(204).end();
     } catch (error) {
       return res.status(404).json({
         details: {

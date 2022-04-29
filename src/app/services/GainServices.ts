@@ -23,6 +23,10 @@ class GainService implements IGainService {
   async updated(id: string, payload): Promise<void> {
     await this.gainRepository.updated(id, payload);
   }
+
+  async delete(id: string): Promise<void> {
+    await this.gainRepository.delete(id);
+  }
 }
 
 export default GainService;
