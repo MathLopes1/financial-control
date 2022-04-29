@@ -77,6 +77,23 @@ class SpendController {
       });
     }
   }
+
+  @Delete('/:id')
+  async delete(req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params;
+      await this.spendService.delete(id);
+
+      return res.status(204).end();
+    } catch (error) {
+      return res.status(404).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
 }
 
 export default SpendController;

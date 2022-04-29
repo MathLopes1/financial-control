@@ -35,6 +35,10 @@ class SpendService implements ISpendService {
   async updated(id: string, payload): Promise<void> {
     await this.spendRepository.updated(id, payload);
   }
+
+  async delete(id: string): Promise<void> {
+    await this.spendRepository.delete(id);
+  }
 }
 
 export default SpendService;

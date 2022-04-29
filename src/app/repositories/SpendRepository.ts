@@ -33,6 +33,11 @@ class SpendRepository implements ISpendRepository {
     const repo = getRepository(Spend);
     await repo.update(id, payload);
   }
+
+  async delete(id: string): Promise<void> {
+    const repo = getRepository(Spend);
+    await repo.delete(id);
+  }
 }
 
 export default SpendRepository;

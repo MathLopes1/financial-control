@@ -10,4 +10,5 @@ export interface ISpendService {
     }) => Promise<ISpend>
     find: () => Promise<ISpend | ISpend[]>
     updated: (id: string, payload) => Promise<void>
+    delete: (id: string) => Promise<void>
 }
