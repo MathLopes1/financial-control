@@ -7,6 +7,11 @@ export class UsersMigration1651186878287 implements MigrationInterface {
         name: "users",
         columns: [
           {
+            name: "id",
+            type: "uuid",
+            isPrimary: true,
+          },
+          {
             name: "Nome",
             type: "varchar",
           },
