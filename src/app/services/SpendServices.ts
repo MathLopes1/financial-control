@@ -31,6 +31,10 @@ class SpendService implements ISpendService {
     const findSpend = await this.spendRepository.find();
     return findSpend;
   }
+
+  async updated(id: string, payload): Promise<void> {
+    await this.spendRepository.updated(id, payload);
+  }
 }
 
 export default SpendService;

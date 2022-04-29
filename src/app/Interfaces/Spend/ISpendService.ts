@@ -9,4 +9,5 @@ export interface ISpendService {
       transporte,
     }) => Promise<ISpend>
     find: () => Promise<ISpend | ISpend[]>
+    updated: (id: string, payload) => Promise<void>
 }

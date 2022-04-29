@@ -59,6 +59,24 @@ class SpendController {
       });
     }
   }
+
+  @Put('/:id')
+  async updated(req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params;
+      const payload = req.body;
+      await this.spendService.updated(id, payload);
+
+      return res.status(200).json('Updated Sucess');
+    } catch (error) {
+      return res.status(404).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
 }
 
 export default SpendController;
