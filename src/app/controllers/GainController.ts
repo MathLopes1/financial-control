@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Controller, Post } from "@decorators/express";
+import { Controller, Get, Post } from "@decorators/express";
 
 import { IGain } from "../Interfaces/Gain/IGain";
 import { IGainService } from "../Interfaces/Gain/IGainService";
@@ -24,6 +24,22 @@ class GainController {
       });
 
       return res.status(201).json(result);
+    } catch (error) {
+      return res.status(404).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
+
+  @Get('/')
+  async find(req: Request, res: Response): Promise<Response> {
+    try {
+      const findGain = await this.gainService.find();
+
+      return res.status(200).json(findGain);
     } catch (error) {
       return res.status(404).json({
         details: {

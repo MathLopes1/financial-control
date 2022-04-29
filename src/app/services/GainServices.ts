@@ -14,6 +14,11 @@ class GainService implements IGainService {
     const newGain:IGain = await this.gainRepository.create(total_ganhos);
     return newGain;
   }
+
+  async find(): Promise<IGain | IGain[]> {
+    const findGain = await this.gainRepository.find();
+    return findGain;
+  }
 }
 
 export default GainService;
