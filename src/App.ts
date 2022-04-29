@@ -1,5 +1,6 @@
 import Server, { Express } from 'express';
 import IndexRoutes from '../src/routes/index';
+import ErrorHandle from './app/middleware/ErrorHandle';
 import Database from './database/index';
 
 class App {
@@ -9,6 +10,7 @@ class App {
     this.server = Server();
     this.middlewares();
     this.routes();
+    this.errorHandler();
   }
 
   static async Starting() {
@@ -18,13 +20,17 @@ class App {
     return app.server;
   }
 
-  middlewares(): void {
+  private middlewares(): void {
     this.server.use(Server.json());
     this.server.use(Server.urlencoded({ extended: true }));
   }
 
-  routes(): void {
+  private routes(): void {
     this.server.use('/api', IndexRoutes.routes());
+  }
+
+  private errorHandler(): void {
+    this.server.use(ErrorHandle);
   }
 }
 

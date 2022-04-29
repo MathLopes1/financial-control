@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import Gain from '../entities/GainModel';
+import NotFound from '../Errors/errorsHttp/NotFound';
 import { IGain } from '../Interfaces/Gain/IGain';
 import { IGainRepository } from '../Interfaces/Gain/IGainRepository';
 
@@ -19,11 +20,21 @@ class GainRepository implements IGainRepository {
 
   async updated(id: string, payload): Promise<void> {
     const repo = getRepository(Gain);
+
+    if (!(await repo.findOne(id))) {
+      throw new NotFound(`Gain -> ${id}, does not exists!`);
+    }
+
     await repo.update(id, payload);
   }
 
   async delete(id: string): Promise<void> {
     const repo = getRepository(Gain);
+
+    if (!(await repo.findOne(id))) {
+      throw new NotFound(`Gain -> ${id}, does not exists!`);
+    }
+
     await repo.delete(id);
   }
 }
