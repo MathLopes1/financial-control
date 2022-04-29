@@ -20,6 +20,9 @@
         "class-methods-use-this":"off",
         "import/no-unresolved": "off",
         "import/extensions": "off",
-        "import/prefer-default-export": "off"        
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "off",
+        "camelcase": "off",
+        "no-use-before-define": "off"        
     }
 }

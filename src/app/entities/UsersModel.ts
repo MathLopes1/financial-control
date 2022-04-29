@@ -2,30 +2,37 @@ import {
   Entity, Column, CreateDateColumn, PrimaryColumn,
 } from "typeorm";
 import { v4 as uuid } from 'uuid';
+import { IUser } from "../Interfaces/Users/IUser";
 
 @Entity('users')
-export class Category {
-  constructor() {
+class UserModel implements IUser {
+  constructor(nome: string, data_nascimento: string, email: string, senha: string) {
     if (!this.id) {
       this.id = uuid();
     }
+    this.nome = nome;
+    this.data_nascimento = data_nascimento;
+    this.email = email;
+    this.senha = senha;
   }
 
     @PrimaryColumn()
-      id: string;
+  public id: string;
 
     @Column()
-      Name: string;
+    public nome: string;
 
     @Column()
-      data_nascimento: string;
+    public data_nascimento: string;
 
     @Column()
-      email: string;
+    public email: string;
 
     @Column()
-      senha: string;
+    public senha: string;
 
     @CreateDateColumn()
-      created_at: Date;
+    public created_at: Date;
 }
+
+export default UserModel;
