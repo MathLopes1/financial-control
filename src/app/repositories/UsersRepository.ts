@@ -1,8 +1,9 @@
 import { getRepository } from 'typeorm';
 import User from '../entities/UsersModel';
 import { IUser } from '../Interfaces/Users/IUser';
+import { IUserRepository } from '../Interfaces/Users/IUserRepository';
 
-class UserRepository {
+class UserRepository implements IUserRepository {
   async create(
     nome: string,
     data_nascimento: string,
