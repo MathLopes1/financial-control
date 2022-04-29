@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
-import { Controller, Get, Post } from "@decorators/express";
+import {
+  Controller, Get, Post, Put,
+} from "@decorators/express";
 
 import { IGain } from "../Interfaces/Gain/IGain";
 import { IGainService } from "../Interfaces/Gain/IGainService";
@@ -40,6 +42,25 @@ class GainController {
       const findGain = await this.gainService.find();
 
       return res.status(200).json(findGain);
+    } catch (error) {
+      return res.status(404).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
+
+  @Put('/:id')
+  async updated(req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params;
+      const payload = req.body;
+
+      await this.gainService.updated(id, payload);
+
+      return res.status(200).json('Updated Sucess');
     } catch (error) {
       return res.status(404).json({
         details: {
