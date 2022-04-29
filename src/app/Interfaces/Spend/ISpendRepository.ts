@@ -8,4 +8,5 @@ export interface ISpendRepository {
         saude: number,
         transporte: number) => Promise<ISpend>
     find: () => Promise<ISpend | ISpend[]>
+    updated: (id: string, payload) => Promise<void>
 }

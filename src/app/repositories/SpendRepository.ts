@@ -28,6 +28,11 @@ class SpendRepository implements ISpendRepository {
     const findSpend = repo.find();
     return findSpend;
   }
+
+  async updated(id: string, payload): Promise<void> {
+    const repo = getRepository(Spend);
+    await repo.update(id, payload);
+  }
 }
 
 export default SpendRepository;
