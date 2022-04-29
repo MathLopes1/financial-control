@@ -25,7 +25,7 @@ class UserController {
 
       return res.status(201).json(result);
     } catch (error) {
-      return res.status(500).json({
+      return res.status(404).json({
         details: {
           name: error.name,
           description: error.message,
