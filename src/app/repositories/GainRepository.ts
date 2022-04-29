@@ -21,6 +21,11 @@ class GainRepository implements IGainRepository {
     const repo = getRepository(Gain);
     await repo.update(id, payload);
   }
+
+  async delete(id: string): Promise<void> {
+    const repo = getRepository(Gain);
+    await repo.delete(id);
+  }
 }
 
 export default GainRepository;
