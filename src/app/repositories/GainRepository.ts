@@ -16,6 +16,11 @@ class GainRepository implements IGainRepository {
     const findGain = repo.find();
     return findGain;
   }
+
+  async updated(id: string, payload): Promise<void> {
+    const repo = getRepository(Gain);
+    await repo.update(id, payload);
+  }
 }
 
 export default GainRepository;

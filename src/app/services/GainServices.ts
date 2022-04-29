@@ -19,6 +19,10 @@ class GainService implements IGainService {
     const findGain = await this.gainRepository.find();
     return findGain;
   }
+
+  async updated(id: string, payload): Promise<void> {
+    await this.gainRepository.updated(id, payload);
+  }
 }
 
 export default GainService;
