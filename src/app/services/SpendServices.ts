@@ -26,6 +26,11 @@ class SpendService implements ISpendService {
     );
     return newGain;
   }
+
+  async find(): Promise<ISpend | ISpend[]> {
+    const findSpend = await this.spendRepository.find();
+    return findSpend;
+  }
 }
 
 export default SpendService;

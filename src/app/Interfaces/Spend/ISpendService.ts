@@ -8,4 +8,5 @@ export interface ISpendService {
       saude,
       transporte,
     }) => Promise<ISpend>
+    find: () => Promise<ISpend | ISpend[]>
 }

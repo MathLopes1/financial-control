@@ -43,6 +43,22 @@ class SpendController {
       });
     }
   }
+
+  @Get('/')
+  async find(req: Request, res: Response): Promise<Response> {
+    try {
+      const findSpend = await this.spendService.find();
+
+      return res.status(200).json(findSpend);
+    } catch (error) {
+      return res.status(404).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
 }
 
 export default SpendController;
