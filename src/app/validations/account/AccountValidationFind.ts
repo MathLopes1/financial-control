@@ -21,6 +21,16 @@ class ValidationFindAccount implements Middleware {
           .trim()
           .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'br'] } }),
         senha: Joi.string().min(6).trim(),
+        ganhos_id: Joi.string()
+          .min(36)
+          .max(36)
+          .trim()
+          .pattern(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i),
+        gastos_id: Joi.string()
+          .min(36)
+          .max(36)
+          .trim()
+          .pattern(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i),
       });
       const { error } = await validation.validate(req.body, { abortEarly: true });
       if (error) throw error;

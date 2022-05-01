@@ -4,7 +4,7 @@ import {
 import { v4 as uuid } from 'uuid';
 import { IGain } from "../Interfaces/Gain/IGain";
 
-  @Entity('gain')
+  @Entity('ganhos')
 class GainModel implements IGain {
     constructor(total_ganhos: number) {
       if (!this.id) {

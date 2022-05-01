@@ -4,7 +4,7 @@ import {
 import { v4 as uuid } from 'uuid';
 import { ISpend } from "../Interfaces/Spend/ISpend";
 
-    @Entity('spend')
+    @Entity('gastos')
 class SpendModel implements ISpend {
       constructor(
         entretenimento: number,
