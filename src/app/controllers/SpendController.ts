@@ -84,7 +84,7 @@ class SpendController {
       const { id } = req.params;
       await this.spendService.delete(id);
 
-      return res.status(204).end()
+      return res.status(204).end();
     } catch (error) {
       return res.status(error.statusCode).json({
         details: {

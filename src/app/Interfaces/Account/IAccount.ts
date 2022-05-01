@@ -6,4 +6,6 @@ export interface IAccount {
     email: string;
     senha: string;
     created_at: Date;
+    ganhos_id: string,
+    gastos_id: string,
 }
