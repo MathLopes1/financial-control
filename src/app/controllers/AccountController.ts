@@ -5,6 +5,8 @@ import AccountService from '../services/AccountServices';
 import { IAccountService } from '../Interfaces/Account/IAccountService';
 import { IAccount } from '../Interfaces/Account/IAccount';
 
+import ValidationBodyAccount from '../validations/account/AccountValidationBody';
+
 @Controller('/account')
 class AccountController {
   private readonly accountService: IAccountService;
@@ -13,7 +15,7 @@ class AccountController {
     this.accountService = new AccountService();
   }
 
-  @Post('/')
+  @Post('/', [ValidationBodyAccount])
   async create(req: Request, res: Response): Promise<Response> {
     try {
       const {

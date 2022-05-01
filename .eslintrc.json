@@ -23,6 +23,9 @@
         "import/prefer-default-export": "off",
         "no-unused-vars": "off",
         "camelcase": "off",
-        "no-use-before-define": "off"        
+        "no-use-before-define": "off",
+        "no-plusplus":"off",
+        "eqeqeq":"off",
+        "no-shadow":"off"        
     }
 }

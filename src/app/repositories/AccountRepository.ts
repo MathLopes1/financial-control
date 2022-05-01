@@ -1,9 +1,9 @@
 import { getRepository } from 'typeorm';
 import Account from '../entities/UsersModel';
 import { IAccount } from '../Interfaces/Account/IAccount';
-import { IUserRepository } from '../Interfaces/Account/IAccountRepository';
+import { IAccountRepository } from '../Interfaces/Account/IAccountRepository';
 
-class UserRepository implements IUserRepository {
+class AccountRepository implements IAccountRepository {
   async create(
     nome: string,
     cpf: string,
@@ -18,4 +18,4 @@ class UserRepository implements IUserRepository {
   }
 }
 
-export default UserRepository;
+export default AccountRepository;
