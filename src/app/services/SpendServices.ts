@@ -1,3 +1,7 @@
+import { getRepository } from "typeorm";
+
+import Spend from "../entities/SpendModel";
+import NotFound from "../Errors/errorsHttp/NotFound";
 import { ISpend } from "../Interfaces/Spend/ISpend";
 import { ISpendRepository } from "../Interfaces/Spend/ISpendRepository";
 import { ISpendService } from "../Interfaces/Spend/ISpendService";
@@ -33,10 +37,22 @@ class SpendService implements ISpendService {
   }
 
   async updated(id: string, payload): Promise<void> {
+    const repo = getRepository(Spend);
+
+    if (!(await repo.findOne(id))) {
+      throw new NotFound(`Spend -> ${id}, does not exists!`);
+    }
+
     await this.spendRepository.updated(id, payload);
   }
 
   async delete(id: string): Promise<void> {
+    const repo = getRepository(Spend);
+
+    if (!(await repo.findOne(id))) {
+      throw new NotFound(`Spend -> ${id}, does not exists!`);
+    }
+
     await this.spendRepository.delete(id);
   }
 }

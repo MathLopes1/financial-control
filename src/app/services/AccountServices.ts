@@ -1,9 +1,12 @@
+import { getRepository } from 'typeorm';
 import AccountRepository from '../repositories/AccountRepository';
 
 import { IAccount } from '../Interfaces/Account/IAccount';
 import { IAccountService } from '../Interfaces/Account/IAccountService';
 import { IAccountRepository } from '../Interfaces/Account/IAccountRepository';
 import IsConflict from '../utils/functions/IsConflict.util';
+import Account from '../entities/UsersModel';
+import NotFound from '../Errors/errorsHttp/NotFound';
 
 class AccountService implements IAccountService {
   private accountRepository: IAccountRepository;
@@ -31,10 +34,22 @@ class AccountService implements IAccountService {
   }
 
   async updated(id: string, payload): Promise<void> {
+    const repo = getRepository(Account);
+
+    if (!(await repo.findOne(id))) {
+      throw new NotFound(`Account -> ${id}, does not exists!`);
+    }
+
     await this.accountRepository.updated(id, payload);
   }
 
   async delete(id: string): Promise<void> {
+    const repo = getRepository(Account);
+
+    if (!(await repo.findOne(id))) {
+      throw new NotFound(`Account -> ${id}, does not exists!`);
+    }
+
     await this.accountRepository.delete(id);
   }
 }
