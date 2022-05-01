@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Controller, Post } from '@decorators/express';
+import { Controller, Get, Post } from '@decorators/express';
 
 import AccountService from '../services/AccountServices';
 import { IAccountService } from '../Interfaces/Account/IAccountService';
@@ -26,6 +26,22 @@ class AccountController {
       });
 
       return res.status(201).json(result);
+    } catch (error) {
+      return res.status(error.statusCode).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
+
+  @Get('/')
+  async find(req: Request, res: Response): Promise<Response> {
+    try {
+      const accountGain = await this.accountService.find();
+
+      return res.status(200).json(accountGain);
     } catch (error) {
       return res.status(404).json({
         details: {

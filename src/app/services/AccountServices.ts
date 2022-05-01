@@ -24,6 +24,11 @@ class AccountService implements IAccountService {
       .create(nome, cpf, data_nascimento, email, senha);
     return newAccount;
   }
+
+  async find(): Promise<IAccount | IAccount[]> {
+    const findGain = await this.accountRepository.find();
+    return findGain;
+  }
 }
 
 export default AccountService;

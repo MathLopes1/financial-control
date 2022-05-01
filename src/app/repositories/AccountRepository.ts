@@ -16,6 +16,12 @@ class AccountRepository implements IAccountRepository {
     const result: IAccount = await repo.save(newAccount);
     return result;
   }
+
+  async find(): Promise<IAccount | IAccount[]> {
+    const repo = getRepository(Account);
+    const findAccount = repo.find();
+    return findAccount;
+  }
 }
 
 export default AccountRepository;
