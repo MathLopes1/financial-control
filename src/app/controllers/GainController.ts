@@ -61,7 +61,7 @@ class GainController {
 
       return res.status(200).json('Updated Sucess');
     } catch (error) {
-      return res.status(404).json({
+      return res.status(error.statusCode).json({
         details: {
           name: error.name,
           description: error.message,
@@ -78,7 +78,7 @@ class GainController {
 
       return res.status(204).end();
     } catch (error) {
-      return res.status(404).json({
+      return res.status(error.statusCode).json({
         details: {
           name: error.name,
           description: error.message,
