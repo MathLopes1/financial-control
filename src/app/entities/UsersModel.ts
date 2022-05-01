@@ -2,15 +2,16 @@ import {
   Entity, Column, CreateDateColumn, PrimaryColumn,
 } from "typeorm";
 import { v4 as uuid } from 'uuid';
-import { IUser } from "../Interfaces/Users/IUser";
+import { IAccount } from "../Interfaces/Account/IAccount";
 
-@Entity('users')
-class UserModel implements IUser {
-  constructor(nome: string, data_nascimento: string, email: string, senha: string) {
+@Entity('conta')
+class AccountModel implements IAccount {
+  constructor(nome: string, cpf: string, data_nascimento: string, email: string, senha: string) {
     if (!this.id) {
       this.id = uuid();
     }
     this.nome = nome;
+    this.cpf = cpf;
     this.data_nascimento = data_nascimento;
     this.email = email;
     this.senha = senha;
@@ -21,6 +22,9 @@ class UserModel implements IUser {
 
     @Column()
     public nome: string;
+
+    @Column()
+    public cpf: string;
 
     @Column()
     public data_nascimento: string;
@@ -35,4 +39,4 @@ class UserModel implements IUser {
     public created_at: Date;
 }
 
-export default UserModel;
+export default AccountModel;
