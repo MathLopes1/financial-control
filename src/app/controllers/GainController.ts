@@ -6,6 +6,7 @@ import {
 import { IGain } from "../Interfaces/Gain/IGain";
 import { IGainService } from "../Interfaces/Gain/IGainService";
 import GainService from '../services/GainServices';
+import VadalidationId from '../validations/ValidationId';
 
 @Controller('/gain')
 class GainController {
@@ -52,7 +53,7 @@ class GainController {
     }
   }
 
-  @Put('/:id')
+  @Put('/:id', [VadalidationId])
   async updated(req: Request, res: Response): Promise<Response> {
     try {
       const { id } = req.params;
@@ -70,7 +71,7 @@ class GainController {
     }
   }
 
-  @Delete('/:id')
+  @Delete('/:id', [VadalidationId])
   async delete(req: Request, res: Response): Promise<Response> {
     try {
       const { id } = req.params;

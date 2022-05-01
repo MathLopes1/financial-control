@@ -32,17 +32,17 @@ export class AccountMigration1651257870592 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "created_at",
-            type: "timestamp",
-            default: "now()",
-          },
-          {
             name: "ganhos_id",
             type: "uuid",
           },
           {
             name: "gastos_id",
             type: "uuid",
+          },
+          {
+            name: "created_at",
+            type: "timestamp",
+            default: "now()",
           },
         ],
         foreignKeys: [

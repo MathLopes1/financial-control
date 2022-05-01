@@ -9,6 +9,7 @@ import { IAccount } from '../Interfaces/Account/IAccount';
 
 import ValidationBodyAccount from '../validations/account/AccountValidationBody';
 import ValidationFindAccount from '../validations/account/AccountValidationFind';
+import VadalidationId from '../validations/ValidationId';
 
 @Controller('/account')
 class AccountController {
@@ -55,7 +56,7 @@ class AccountController {
     }
   }
 
-  @Put('/:id')
+  @Put('/:id', [VadalidationId, ValidationBodyAccount])
   async updated(req: Request, res: Response): Promise<Response> {
     try {
       const { id } = req.params;
@@ -73,7 +74,7 @@ class AccountController {
     }
   }
 
-  @Delete('/:id')
+  @Delete('/:id', [VadalidationId])
   async delete(req: Request, res: Response): Promise<Response> {
     try {
       const { id } = req.params;
