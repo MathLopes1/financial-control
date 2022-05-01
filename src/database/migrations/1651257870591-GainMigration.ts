@@ -4,7 +4,7 @@ export class GainMigration1651257870591 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "gain",
+        name: "ganhos",
         columns: [
           {
             name: "id",
@@ -21,6 +21,6 @@ export class GainMigration1651257870591 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("gain");
+    await queryRunner.dropTable("ganhos");
   }
 }

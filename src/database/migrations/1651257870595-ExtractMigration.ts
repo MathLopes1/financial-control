@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class AccountMigration1651257870595 implements MigrationInterface {
+export class ExtractMigration1651257870595 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "account",
+        name: "extrato",
         columns: [
           {
             name: "id",
@@ -12,35 +12,40 @@ export class AccountMigration1651257870595 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "user_id",
+            name: "conta_id",
             type: "uuid",
           },
           {
-            name: "gain_id",
+            name: "ganhos_id",
             type: "uuid",
           },
           {
-            name: "spend_id",
+            name: "gastos_id",
             type: "uuid",
+          },
+          {
+            name: "created_at",
+            type: "timestamp",
+            default: "now()",
           },
         ],
         foreignKeys: [
           {
-            name: "fk_user",
-            columnNames: ["user_id"],
-            referencedTableName: "users",
+            name: "fk_conta",
+            columnNames: ["conta_id"],
+            referencedTableName: "conta",
             referencedColumnNames: ["id"],
           },
           {
-            name: "fk_gain",
-            columnNames: ["gain_id"],
-            referencedTableName: "gain",
+            name: "fk_ganhos",
+            columnNames: ["ganhos_id"],
+            referencedTableName: "ganhos",
             referencedColumnNames: ["id"],
           },
           {
-            name: "fk_spend",
-            columnNames: ["spend_id"],
-            referencedTableName: "spend",
+            name: "fk_gastos",
+            columnNames: ["gastos_id"],
+            referencedTableName: "gastos",
             referencedColumnNames: ["id"],
           },
         ],
@@ -49,6 +54,6 @@ export class AccountMigration1651257870595 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("account");
+    await queryRunner.dropTable("extrato");
   }
 }
