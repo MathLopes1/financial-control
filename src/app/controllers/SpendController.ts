@@ -6,6 +6,7 @@ import {
 import { ISpendService } from '../Interfaces/Spend/ISpendService';
 import SpendService from '../services/SpendServices';
 import { ISpend } from '../Interfaces/Spend/ISpend';
+import VadalidationId from '../validations/ValidationId';
 
 @Controller('/spend')
 class SpendController {
@@ -60,7 +61,7 @@ class SpendController {
     }
   }
 
-  @Put('/:id')
+  @Put('/:id', [VadalidationId])
   async updated(req: Request, res: Response): Promise<Response> {
     try {
       const { id } = req.params;
@@ -78,7 +79,7 @@ class SpendController {
     }
   }
 
-  @Delete('/:id')
+  @Delete('/:id', [VadalidationId])
   async delete(req: Request, res: Response): Promise<Response> {
     try {
       const { id } = req.params;
