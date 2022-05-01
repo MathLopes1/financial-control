@@ -22,6 +22,16 @@ class AccountRepository implements IAccountRepository {
     const findAccount = repo.find();
     return findAccount;
   }
+
+  async updated(id: string, payload): Promise<void> {
+    const repo = getRepository(Account);
+    await repo.update(id, payload);
+  }
+
+  async delete(id: string): Promise<void> {
+    const repo = getRepository(Account);
+    await repo.delete(id);
+  }
 }
 
 export default AccountRepository;

@@ -8,4 +8,6 @@ export interface IAccountRepository{
         email: string,
         senha: string) => Promise<IAccount>
     find: () => Promise<IAccount | IAccount[]>
+    updated: (id: string, payload) => Promise<void>
+    delete: (id: string) => Promise<void>
 }
