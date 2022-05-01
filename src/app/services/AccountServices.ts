@@ -29,6 +29,14 @@ class AccountService implements IAccountService {
     const findGain = await this.accountRepository.find();
     return findGain;
   }
+
+  async updated(id: string, payload): Promise<void> {
+    await this.accountRepository.updated(id, payload);
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.accountRepository.delete(id);
+  }
 }
 
 export default AccountService;
