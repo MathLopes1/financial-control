@@ -1,12 +1,12 @@
 import {
   Entity, Column, CreateDateColumn, PrimaryColumn,
-  ManyToOne, JoinColumn, BeforeInsert, BeforeUpdate,
+  ManyToOne, JoinColumn,
 } from "typeorm";
 import { v4 as uuid } from 'uuid';
-import bcrypt from 'bcrypt';
 import { IAccount } from "../Interfaces/Account/IAccount";
 import GainModel from "./GainModel";
 import SpendModel from "./SpendModel";
+import UserModel from "./UserModel";
 
     @Entity('conta')
 class AccountModel implements IAccount {
@@ -14,8 +14,7 @@ class AccountModel implements IAccount {
         nome: string,
         cpf: string,
         data_nascimento: string,
-        email: string,
-        senha: string,
+        usuario_id: string,
         ganhos_id: string,
         gastos_id: string,
       ) {
@@ -25,8 +24,7 @@ class AccountModel implements IAccount {
         this.nome = nome;
         this.cpf = cpf;
         this.data_nascimento = data_nascimento;
-        this.email = email;
-        this.senha = senha;
+        this.usuario_id = usuario_id;
         this.ganhos_id = ganhos_id;
         this.gastos_id = gastos_id;
       }
@@ -44,13 +42,14 @@ class AccountModel implements IAccount {
    public data_nascimento: string;
 
     @Column()
-   public email: string;
+   public usuario_id: string;
 
-    @Column()
-    public senha: string;
+   @ManyToOne(() => UserModel)
+   @JoinColumn({ name: 'usuario_id' })
+    public user: UserModel;
 
     @CreateDateColumn()
-    public created_at: Date;
+   public created_at: Date;
 
     @Column()
     public ganhos_id: string;
@@ -65,12 +64,6 @@ class AccountModel implements IAccount {
     @ManyToOne(() => SpendModel)
     @JoinColumn({ name: 'gastos_id' })
     public spend: SpendModel;
-
-    @BeforeInsert()
-    @BeforeUpdate()
-    hashPassword() {
-      this.senha = bcrypt.hashSync(this.senha, 8);
-    }
     }
 
 export default AccountModel;

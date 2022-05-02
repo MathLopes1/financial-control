@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class AccountMigration1651257870592 implements MigrationInterface {
+export class AccountMigration1651389112390 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -24,12 +24,8 @@ export class AccountMigration1651257870592 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "email",
-            type: "varchar",
-          },
-          {
-            name: "senha",
-            type: "varchar",
+            name: "usuario_id",
+            type: "uuid",
           },
           {
             name: "ganhos_id",
@@ -56,6 +52,12 @@ export class AccountMigration1651257870592 implements MigrationInterface {
             name: "fk_gastos",
             columnNames: ["gastos_id"],
             referencedTableName: "gastos",
+            referencedColumnNames: ["id"],
+          },
+          {
+            name: "fk_usuarios",
+            columnNames: ["usuario_id"],
+            referencedTableName: "usuario",
             referencedColumnNames: ["id"],
           },
         ],
