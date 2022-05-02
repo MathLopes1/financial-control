@@ -7,8 +7,9 @@ import { IGain } from "../Interfaces/Gain/IGain";
 import { IGainService } from "../Interfaces/Gain/IGainService";
 import GainService from '../services/GainServices';
 import VadalidationId from '../validations/ValidationId';
+import TokenBearer from '../middleware/BearerToken';
 
-@Controller('/gain')
+@Controller('/gain', [TokenBearer])
 class GainController {
   private readonly gainService: IGainService;
 

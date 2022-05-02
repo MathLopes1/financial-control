@@ -7,8 +7,9 @@ import { ISpendService } from '../Interfaces/Spend/ISpendService';
 import SpendService from '../services/SpendServices';
 import { ISpend } from '../Interfaces/Spend/ISpend';
 import VadalidationId from '../validations/ValidationId';
+import TokenBearer from '../middleware/BearerToken';
 
-@Controller('/spend')
+@Controller('/spend', [TokenBearer])
 class SpendController {
   private readonly spendService: ISpendService;
 
