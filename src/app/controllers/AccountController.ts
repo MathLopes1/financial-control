@@ -10,8 +10,9 @@ import { IAccount } from '../Interfaces/Account/IAccount';
 import ValidationBodyAccount from '../validations/account/AccountValidationBody';
 import ValidationFindAccount from '../validations/account/AccountValidationFind';
 import VadalidationId from '../validations/ValidationId';
+import TokenBearer from '../middleware/BearerToken';
 
-@Controller('/account')
+@Controller('/account', [TokenBearer])
 class AccountController {
   private readonly accountService: IAccountService;
 
