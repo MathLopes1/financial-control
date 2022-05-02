@@ -55,6 +55,14 @@ class UserController {
       });
     }
   }
+
+  @Get('/logout')
+  async logout(req: Request, res: Response) {
+    /* req.logout();
+    req.flash("Deslogado com sucesso");
+    res.redirect(""); */
+    res.status(200).json("Deslogado com sucesso");
+  }
 }
 
 export default UserController;
