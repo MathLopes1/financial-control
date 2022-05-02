@@ -1,7 +1,6 @@
 import { getRepository } from 'typeorm';
-import bcrypt from 'bcrypt';
 
-import Account from '../entities/UsersModel';
+import Account from '../entities/AccountModel';
 import { IAccount } from '../Interfaces/Account/IAccount';
 import { IAccountRepository } from '../Interfaces/Account/IAccountRepository';
 
@@ -17,14 +16,12 @@ class AccountRepository implements IAccountRepository {
   ): Promise<IAccount> {
     const repo = getRepository(Account);
 
-    const senhaHash = await bcrypt.hash(senha, 10);
-
     const newAccount: IAccount = new Account(
       nome,
       cpf,
       data_nascimento,
       email,
-      senhaHash,
+      senha,
       ganhos_id,
       gastos_id,
     );

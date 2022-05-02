@@ -5,7 +5,7 @@ import { IAccount } from '../Interfaces/Account/IAccount';
 import { IAccountService } from '../Interfaces/Account/IAccountService';
 import { IAccountRepository } from '../Interfaces/Account/IAccountRepository';
 import IsConflict from '../utils/functions/IsConflict.util';
-import Account from '../entities/UsersModel';
+import Account from '../entities/AccountModel';
 import NotFound from '../Errors/errorsHttp/NotFound';
 
 class AccountService implements IAccountService {
