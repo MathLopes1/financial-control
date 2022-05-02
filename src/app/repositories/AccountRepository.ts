@@ -9,8 +9,7 @@ class AccountRepository implements IAccountRepository {
     nome: string,
     cpf: string,
     data_nascimento: string,
-    email: string,
-    senha: string,
+    usuario_id: string,
     ganhos_id: string,
     gastos_id: string,
   ): Promise<IAccount> {
@@ -20,8 +19,7 @@ class AccountRepository implements IAccountRepository {
       nome,
       cpf,
       data_nascimento,
-      email,
-      senha,
+      usuario_id,
       ganhos_id,
       gastos_id,
     );
@@ -32,7 +30,7 @@ class AccountRepository implements IAccountRepository {
   async find(): Promise<IAccount | IAccount[]> {
     const repo = getRepository(Account);
     const findAccount = repo.find({
-      relations: ['gain', 'spend'],
+      relations: ['user', 'gain', 'spend'],
     });
     return findAccount;
   }

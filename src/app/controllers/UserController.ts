@@ -6,6 +6,8 @@ import { IUserService } from '../Interfaces/User/IUserService';
 import UserService from '../services/UserService';
 import { IUser } from '../Interfaces/User/IUser';
 import { ILogin } from '../Interfaces/User/ILogin';
+import ValidationBodyUser from '../validations/user/UserValidationBody';
+import ValidationLogin from '../validations/user/ValidationLogin';
 
 @Controller('/user')
 class UserController {
@@ -15,7 +17,7 @@ class UserController {
     this.userService = new UserService();
   }
 
-  @Post('/')
+  @Post('/', [ValidationBodyUser])
   async create(req: Request, res: Response): Promise<Response> {
     try {
       const {
@@ -36,7 +38,7 @@ class UserController {
     }
   }
 
-  @Post('/login')
+  @Post('/login', [ValidationLogin])
   async login(req: Request, res: Response): Promise<Response> {
     const {
       email, senha,

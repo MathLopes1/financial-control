@@ -7,6 +7,7 @@ import { IUserService } from "../Interfaces/User/IUserService";
 import UserRepository from "../repositories/UserRepository";
 import Token from '../auth/GenerateToken';
 import { ILogin } from '../Interfaces/User/ILogin';
+import IsConflict from '../utils/functions/IsConflict.util';
 
 class UserService implements IUserService {
   private userRepository: IUserRepository;
@@ -16,6 +17,8 @@ class UserService implements IUserService {
   }
 
   async create({ email, senha, habilitado }): Promise<IUser> {
+    await IsConflict.conflictEmail(email);
+
     const newUser:IUser = await this.userRepository.create(email, senha, habilitado);
     return newUser;
   }

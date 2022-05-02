@@ -20,11 +20,12 @@ class ValidationBodyAccount implements Middleware {
           .required(),
         data_nascimento: Joi.date().format('DD/MM/YYYY')
           .required(),
-        email: Joi.string()
+        usuario_id: Joi.string()
+          .min(36)
+          .max(36)
           .trim()
-          .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'br'] } })
+          .pattern(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
           .required(),
-        senha: Joi.string().min(6).trim().required(),
         ganhos_id: Joi.string()
           .min(36)
           .max(36)

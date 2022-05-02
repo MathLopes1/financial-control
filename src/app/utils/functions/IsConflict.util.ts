@@ -7,10 +7,11 @@ import validateCpf from './isValidCpf.util';
 import isOver18 from './isMajority.util';
 
 import AccountModel from '../../entities/AccountModel';
+import UserModel from '../../entities/UserModel';
 
 class IsConflict {
   static async conflictEmail(email: string): Promise<void> {
-    const repoAccount = getRepository(AccountModel);
+    const repoAccount = getRepository(UserModel);
 
     const getEmail = await repoAccount.find({ email });
     if (getEmail.length > 0) {

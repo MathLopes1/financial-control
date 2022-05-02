@@ -23,10 +23,10 @@ class AccountController {
   async create(req: Request, res: Response): Promise<Response> {
     try {
       const {
-        nome, cpf, data_nascimento, email, senha, ganhos_id, gastos_id,
+        nome, cpf, data_nascimento, usuario_id, ganhos_id, gastos_id,
       } = req.body;
       const result: IAccount = await this.accountService.create({
-        nome, cpf, data_nascimento, email, senha, ganhos_id, gastos_id,
+        nome, cpf, data_nascimento, usuario_id, ganhos_id, gastos_id,
       });
 
       return res.status(201).json(result);

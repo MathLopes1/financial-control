@@ -5,8 +5,7 @@ export interface IAccountRepository{
         nome: string,
         cpf: string,
         data_nascimento: string,
-        email: string,
-        senha: string,
+        usuario_id: string,
         ganhos_id: string,
         gastos_id: string) => Promise<IAccount>
     find: () => Promise<IAccount | IAccount[]>

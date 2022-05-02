@@ -16,15 +16,14 @@ class AccountService implements IAccountService {
   }
 
   async create({
-    nome, cpf, data_nascimento, email, senha, ganhos_id, gastos_id,
+    nome, cpf, data_nascimento, usuario_id, ganhos_id, gastos_id,
   }): Promise<IAccount> {
     await IsConflict.isMajority(data_nascimento);
     await IsConflict.validCpf(cpf);
     await IsConflict.conflictCpf(cpf);
-    await IsConflict.conflictEmail(email);
 
     const newAccount: IAccount = await this.accountRepository
-      .create(nome, cpf, data_nascimento, email, senha, ganhos_id, gastos_id);
+      .create(nome, cpf, data_nascimento, usuario_id, ganhos_id, gastos_id);
     return newAccount;
   }
 
