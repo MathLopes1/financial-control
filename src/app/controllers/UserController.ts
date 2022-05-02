@@ -59,9 +59,9 @@ class UserController {
   @Get('/logout')
   async logout(req: Request, res: Response) {
     /* req.logout();
-    req.flash("Deslogado com sucesso");
+    req.flash("Successfully logged out");
     res.redirect(""); */
-    res.status(200).json("Deslogado com sucesso");
+    res.status(200).json("Successfully logged out");
   }
 }
 

@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  etiz:
+    driver: bridge
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${PASSWORD_POSTGREE:-}
+  
+  app:
+    image: node:16.13.0
+    volumes:
+      - '.:/backend/'
+    working_dir: /backend/
+    depends_on:
+      - database
+    networks:
+      - etiz
+    env_file:
+      - .env
+    ports:
+      - 3333:3333
+    command: npm run dev:server
