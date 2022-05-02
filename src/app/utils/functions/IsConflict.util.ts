@@ -6,7 +6,7 @@ import BadRequest from '../../Errors/errorsHttp/BadRequest';
 import validateCpf from './isValidCpf.util';
 import isOver18 from './isMajority.util';
 
-import AccountModel from '../../entities/UsersModel';
+import AccountModel from '../../entities/AccountModel';
 
 class IsConflict {
   static async conflictEmail(email: string): Promise<void> {

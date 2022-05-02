@@ -26,6 +26,7 @@
         "no-use-before-define": "off",
         "no-plusplus":"off",
         "eqeqeq":"off",
-        "no-shadow":"off"        
+        "no-shadow":"off",
+        "no-underscore-dangle":"off"        
     }
 }
