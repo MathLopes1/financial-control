@@ -11,4 +11,5 @@ export interface IAccountRepository{
     find: () => Promise<IAccount | IAccount[]>
     updated: (id: string, payload) => Promise<void>
     delete: (id: string) => Promise<void>
+    generateExtract: (id: string) => Promise<IAccount>
 }

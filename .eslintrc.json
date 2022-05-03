@@ -27,6 +27,7 @@
         "no-plusplus":"off",
         "eqeqeq":"off",
         "no-shadow":"off",
-        "no-underscore-dangle":"off"        
+        "no-underscore-dangle":"off",
+        "no-sequences":"off"        
     }
 }

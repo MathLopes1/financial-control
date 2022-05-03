@@ -57,6 +57,23 @@ class AccountController {
     }
   }
 
+  @Get('/extract/:id')
+  async generateExtract(req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params;
+      const result = await this.accountService.generateExtract(id);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      return res.status(404).json({
+        details: {
+          name: error.name,
+          description: error.message,
+        },
+      });
+    }
+  }
+
   @Put('/:id', [VadalidationId, ValidationBodyAccount])
   async updated(req: Request, res: Response): Promise<Response> {
     try {
