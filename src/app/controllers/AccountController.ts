@@ -44,9 +44,9 @@ class AccountController {
   @Get('/', [ValidationFindAccount])
   async find(req: Request, res: Response): Promise<Response> {
     try {
-      const accountGain = await this.accountService.find();
+      const result = await this.accountService.find();
 
-      return res.status(200).json(accountGain);
+      return res.status(200).json(result);
     } catch (error) {
       return res.status(404).json({
         details: {
@@ -57,13 +57,13 @@ class AccountController {
     }
   }
 
-  @Get('/extract/:id')
+  @Get('/extract/:id', [VadalidationId])
   async generateExtract(req: Request, res: Response): Promise<Response> {
     try {
       const { id } = req.params;
-      const result = await this.accountService.generateExtract(id);
+      const Extract = await this.accountService.generateExtract(id);
 
-      return res.status(200).json(result);
+      return res.status(200).json({ FinancialStatementStatement: Extract });
     } catch (error) {
       return res.status(404).json({
         details: {
