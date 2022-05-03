@@ -51,6 +51,11 @@ class AccountService implements IAccountService {
 
     await this.accountRepository.delete(id);
   }
+
+  async generateExtract(id: string) {
+    const result = await this.accountRepository.generateExtract(id);
+    return result;
+  }
 }
 
 export default AccountService;
