@@ -1,6 +1,7 @@
 import Server, { Express } from 'express';
 import IndexRoutes from '../src/routes/index';
 import ErrorHandle from './app/middleware/ErrorHandle';
+import { logger } from './app/utils/log/logger';
 import Database from './database/index';
 
 class App {
@@ -16,7 +17,8 @@ class App {
   static async Starting() {
     const app: App = new App();
     await Database.connect();
-
+    logger
+      .info('connected with the database');
     return app.server;
   }
 
