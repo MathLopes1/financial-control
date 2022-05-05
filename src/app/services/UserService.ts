@@ -34,7 +34,7 @@ class UserService implements IUserService {
     if (!isValidPassword) {
       throw new Unauthorized('Invalid password, enter a valid one');
     }
-
+    console.log({ id: user.id });
     const token: String = Token({ id: user.id });
     const { habilitado } = user;
     const result: ILogin = { email, habilitado, token };
